@@ -65,7 +65,7 @@ module Danger
       end
 
       def fetch_json(uri)
-        req = Net::HTTP::Get.new(uri.request_uri, { "Content-Type" => "application/json", "Accept" => "application/json" })
+        req = Net::HTTP::Get.new(uri.request_uri, { "Content-Type" => "application/json" })
         req.basic_auth @username, @password
         res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: use_ssl) do |http|
           http.request(req)
@@ -75,7 +75,7 @@ module Danger
       end
 
       def post(uri, body)
-        req = Net::HTTP::Post.new(uri.request_uri, { "Content-Type" => "application/json", "Accept" => "application/json" })
+        req = Net::HTTP::Post.new(uri.request_uri, { "Content-Type" => "application/json" })
         req.basic_auth @username, @password
         req.body = body
 
