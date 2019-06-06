@@ -69,7 +69,7 @@ module Danger
         res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: use_ssl) do |http|
           http.request(req)
         end
-        puts "DEBUG"
+        puts "DEBUG"*10
         puts "==" * 50
         puts inspect
         puts "--" * 50
