@@ -68,6 +68,11 @@ module Danger
         res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: use_ssl) do |http|
           http.request(req)
         end
+        puts "DEBUG"
+        puts "==" * 50
+        puts inspect
+        puts "--" * 50
+        puts "URI: #{uri}"
         JSON.parse(res.body, symbolize_names: true)
       end
 
