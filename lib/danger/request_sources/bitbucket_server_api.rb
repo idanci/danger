@@ -64,7 +64,7 @@ module Danger
       end
 
       def fetch_json(uri)
-        req = Net::HTTP::Get.new(uri.request_uri, { "Content-Type" => "application/json" })
+        req = Net::HTTP::Get.new(uri.request_uri, { "Content-Type" => "application/json", "Accept" => "application/json" })
         req.basic_auth @username, @password
         res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: use_ssl) do |http|
           http.request(req)
@@ -74,6 +74,11 @@ module Danger
         puts inspect
         puts "--" * 50
         puts "URI: #{uri}"
+        puts "#{@username.length}"
+        puts "#{@password.length}"
+        puts "**" * 50
+        puts "#{res.body}"
+
         JSON.parse(res.body, symbolize_names: true)
       end
 
