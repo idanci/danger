@@ -69,27 +69,24 @@ module Danger
         res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: use_ssl) do |http|
           http.request(req)
         end
-        puts "DEBUG"*10
-        puts "==" * 50
-        puts inspect
-        puts "--" * 50
-        puts "URI: #{uri}"
-        puts "#{@username.length}"
-        puts "#{@password.length}"
-        puts "**" * 50
-        puts "#{res.body}"
 
         JSON.parse(res.body, symbolize_names: true)
       end
 
       def post(uri, body)
-        req = Net::HTTP::Post.new(uri.request_uri, { "Content-Type" => "application/json" })
+        req = Net::HTTP::Post.new(uri.request_uri, { "Content-Type" => "application/json", "Accept" => "application/json" })
         req.basic_auth @username, @password
         req.body = body
 
         res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: use_ssl) do |http|
           http.request(req)
         end
+
+        puts "==" * 50
+        puts "URI: #{uri}"
+        puts "BODY: #{body}"
+        puts res
+        puts "--" * 50
 
         # show error to the user when Bitbucket Server returned an error
         case res
