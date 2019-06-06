@@ -14,9 +14,11 @@ module Danger
         if self.host && !(self.host.include? "http://") && !(self.host.include? "https://")
           self.host = "https://" + self.host
         end
-        # self.pr_api_endpoint = "#{host}/rest/api/1.0/projects/#{project}/repos/#{slug}/pull-requests/#{pull_request_id}"
-        # self.pr_api_endpoint = "https://bitbucket.endava.com/projects/ENDAVA/repos/dev-week-ios/pull-requests/73"
-        self.pr_api_endpoint = "https://bitbucket.endava.com/rest/api/1.0/projects/ENDAVA/repos/dev-week-ios/pull-requests/73"
+        puts "AA"*50
+        puts ENV["LOCAL_GIT_PR_URL"]
+        puts "#{host}/rest/api/1.0/projects/#{project}/repos/#{slug}/pull-requests/#{pull_request_id}"
+        # self.pr_api_endpoint = "https://bitbucket.endava.com/rest/api/1.0/projects/ENDAVA/repos/dev-week-ios/pull-requests/73"
+        self.pr_api_endpoint = "#{host}/rest/api/1.0/projects/#{project}/repos/#{slug}/pull-requests/#{pull_request_id}"
       end
 
       def inspect
