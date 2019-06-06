@@ -82,11 +82,11 @@ module Danger
           http.request(req)
         end
 
-        puts "==" * 50
+        puts "BBBBBBBBBB" * 50
         puts "URI: #{uri}"
         puts "BODY: #{body}"
         puts res
-        puts "--" * 50
+        puts "ZZZZZZZ" * 50
 
         # show error to the user when Bitbucket Server returned an error
         case res
