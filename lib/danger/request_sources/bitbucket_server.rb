@@ -47,6 +47,9 @@ module Danger
       end
 
       def setup_danger_branches
+        puts "PP"*50
+        puts self.pr_json.class
+        puts self.pr_json
         base_branch = self.pr_json[:toRef][:id].sub("refs/heads/", "")
         base_commit = self.pr_json[:toRef][:latestCommit]
         # Support for older versions of Bitbucket Server
