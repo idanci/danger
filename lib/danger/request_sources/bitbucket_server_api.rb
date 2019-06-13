@@ -15,13 +15,6 @@ module Danger
           self.host = "https://" + self.host
         end
 
-        puts "LLL"*50
-        puts "#{host}rest/api/1.0/projects/#{ENV['PROJECT_NAME']}/repos/#{ENV['REPO_NAME']}/pull-requests/#{pull_request_id}"
-        puts "ZZZ"*50
-        ENV.each do |k,v|
-          puts "#{k}: #{v}"
-        end
-
         self.pr_api_endpoint = "#{host}rest/api/1.0/projects/#{ENV['PROJECT_NAME']}/repos/#{ENV['REPO_NAME']}/pull-requests/#{pull_request_id}"
       end
 
